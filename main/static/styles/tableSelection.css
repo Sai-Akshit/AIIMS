@@ -1,0 +1,59 @@
+html {   
+    height: 100%;   
+}  
+
+  
+.global-container {  
+    height: 100%;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    background-color: #f5f5f5;  
+}  
+form {
+    padding-top: 10px;  
+    font-size: 20px;  
+    margin-top: 30px;  
+}  
+.card-title {   
+font-weight: 600;  
+ }  
+.btn {  
+    font-size: 21px;  
+     
+}  
+.login-form {   
+    width: 330px;  
+    margin: 30px;
+      
+}  
+label{
+               width: 200px;
+               display: inline-block;
+           }
+label{
+                text-align: right;
+            }
+            .divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/* To show the lines on right 
+and left sides of the text */
+.divider::after,
+.divider::before {
+  content: "";
+  border: 1px solid black;
+  flex: 1;
+}
+
+/* Space on left and right sides of text */
+.divider:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.25em;
+}

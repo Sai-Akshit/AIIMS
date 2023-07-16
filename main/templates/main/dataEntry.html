@@ -1,0 +1,272 @@
+{% load static %}
+
+<! DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Entry</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Toastr Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+      td,
+      th {
+        padding: 4px;
+        text-align: center;
+      }
+
+      .global-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f5f5f5;
+      }
+      form {
+        padding-top: 10px;
+        font-size: 20px;
+        margin-top: 30px;
+      }
+      .card-title {
+        font-weight: 600;
+      }
+      .btn {
+        font-size: 21px;
+      }
+      .login-form {
+        width: 330px;
+        margin: 30px;
+      }
+      td,
+      th {
+        padding: 4px;
+        text-align: center;
+      }
+      table,
+      th,
+      td {
+        border: solid black 2px;
+      }
+      table {
+        height: 30px;
+        margin: 10px;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      label {
+        width: 200px;
+        display: inline-block;
+      }
+      label {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      {% for message in messages %}
+        swal('Incorrect Credentials', '{{ message }}', 'error');
+      {% endfor %}
+    </script>
+    <script>
+      {% if messages %}
+          {% for message in messages %}
+              var message = "{{ message }}";
+              swal(message, {
+                  icon: "success",
+              });
+          {% endfor %}
+      {% endif %}
+    </script>
+
+    {% include 'main/navbar.html' %}
+    <div class=" row boxlayout">
+      <!-- <div class="global-container">   -->
+          <div class="card login-form" style="width: 490px;">  
+          <div class="card-body">  
+              <h1 class="card-title text-center"></h1>  
+              <div class="card-text">
+            <div>
+              <h3>Current ICD: {{ table_name }}</h3>
+              <div class="boxed">
+                <div class="boxed-1" ">
+                <form method="POST">
+                  {% csrf_token %}
+                  <div>
+                    <label for="s.no">S.no: {{s_no}}</label>
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Parameter Name">Parameter Name</label>
+                    <input type="text" name="parameter" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Command Word">Command Word</label>
+                    <input type="text" name="command" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Word no">Word No</label>
+                    <input type="text" name="word_no" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Word Length">Word Length</label>
+                    <input type="text" name="word_length" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Scale">Scale</label>
+                    <input type="text" name="scale" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Data_Type">Data Type</label>
+                    <select name="data_type" id="">
+                      <option value="HEX16">HEX16</option>
+                      <option value="HEX32">HEX32</option>
+                      <option value="HEX64">HEX64</option>
+                      <option value="UNIT16">UNIT16</option>
+                      <option value="UNIT32">UNIT32</option>
+                      <option value="UNIT64">UNIT64</option>
+                      <option value="FLAGD">FLAGD</option>
+                      <option value="FLAGX">FLAGX</option>
+                      <option value="FLAGB">FLAGB</option>
+                      <option value="FLOAT16">FLOAT16</option>
+                      <option value="FLOAT32">FLOAT16</option>
+                      <option value="FLOAT64">FLOAT64</option>
+                      <option value="INTFLOAT16">INTFLOAT16</option>
+                      <option value="INTFLOAT32">INTFLOAT32</option>
+                      <option value="INTFLOAT64">INTFLOAT64</option>
+                      <option value="CHART">CHART</option>
+                      <option value="ADC">ADC</option>
+                      <option value="ADC12">ADC12</option>
+                      <option value="BC1">BC1</option>
+                      <option value="BC2">BC2</option>
+                      <option value="BC1N">BC1N</option>
+                      <option value="BC2N">BC2N</option>
+                      <option value="BNR1">BNR1</option>
+                      <option value="BNR1N">BNR1N</option>
+                      <option value="BNR2N">BNR2N</option>
+                    </select>
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Units">Units</label>
+                    <input type="text" name="units" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Parameter 1">Parameter 1</label>
+                    <input type="text" name="para1" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Parameter 2">Parameter 2</label>
+                    <input type="text" name="para2" />
+                    <div>
+                      <br />
+                      <label for="yes_no_radio">Little Endian</label>
+                      <input
+                        type="radio"
+                        name="endian"
+                        value="yes"
+                        checked
+                      />Yes <input type="radio" name="endian" value="no" />No
+                    </div>
+                    <br />
+                  </div>
+                  <div class="mx-auto" style="padding-left: 75px">
+                    <button
+                      class="btn btn-success mx-3"
+                      name="add_data"
+                      value="add_data"
+                    >
+                      Add Data
+                    </button>
+                    <button
+                      class="btn btn-warning mx-3"
+                      type="reset"
+                      name="reset"
+                      value="reset"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" row boxlayout">
+    <!-- <div class="global-container">   -->
+        <div class="card login-form" style="width:max-content;">  
+        <div class="card-body">  
+              
+            <div class="card-text"> 
+            <table>
+              <tr>
+                <th>S.No</th>
+                <th>Parameter Name</th>
+                <th>Command word</th>
+                <th>Word No</th>
+                <th>Word Length</th>
+                <th>Scale</th>
+                <th>Data Type</th>
+                <th>Units</th>
+                <th>Parameter 1</th>
+                <th>Parameter 2</th>
+                <th>Little Endian</th>
+                <th>Options</th>
+              </tr>
+              {% for item in data %}
+              <tr>
+                <td>{{ item.S_No }}</td>
+                <td>{{ item.Parameter_Name }}</td>
+                <td>{{ item.Command_Word }}</td>
+                <td>{{ item.Word_No }}</td>
+                <td>{{ item.Word_Length }}</td>
+                <td>{{ item.Scale }}</td>
+                <td>{{ item.Data_Type }}</td>
+                <td>{{ item.Units }}</td>
+                <td>{{ item.Para_1 }}</td>
+                <td>{{ item.Para_2 }}</td>
+                <td>{{ item.Endian }}</td>
+                <td>
+                  <a
+                    href="{% url 'main:update_data' item.S_No %}"
+                    class="badge badge-primary"
+                    >Update</a
+                  >
+
+                  <a
+                    href="{% url 'main:delete_data' item.S_No %}"
+                    class="badge badge-danger"
+                    target="_blank"
+                    >Delete</a
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>

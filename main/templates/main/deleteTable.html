@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Table Conformation</title>
+  </head>
+  <body>
+    <script>
+        {% if messages %}
+          {% for message in messages %}
+              var message = "{{ message }}";
+              swal(message, {
+                  icon: "success",
+              });
+          {% endfor %}
+      {% endif %}
+    </script>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete the table: {{table_name}}?</p>
+    <form method="POST">
+      {% csrf_token %}
+      <button name="yes" value="yes">Yes</button>
+      <button name="no" value="no">No</button>
+    </form>
+  </body>
+</html>

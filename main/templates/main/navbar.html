@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <p
+          class="d-none d-lg-block navbar-brand text-light mx-"
+          style="font-size: 40px"
+        >
+          ICD Management Software
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mx-5">
+          <a href="{% url 'main:select_table' %}" class="nav-link text-white" style="font-size: 20px; font-weight: bold;">Select ICD</a>
+      </li>
+      <li class="nav-item mx-5">
+          <a href="{% url 'main:dataentry' %}" class="nav-link text-white" style="font-size: 20px; font-weight: bold;">Enter Data</a>
+      </li>
+      <li class="nav-item mx-5">
+        <button class="btn btn-success btn-sm">
+          <a href="{% url 'main:logout' %}" style="color: white">Logout</a>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

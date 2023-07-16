@@ -1,0 +1,140 @@
+{% load static %}
+
+<! DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Entry</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'styles/dataEntry.css' %}" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      {% for message in messages %}
+        swal('Incorrect Credentials', '{{ message }}', 'error');
+      {% endfor %}
+    </script>
+
+    {% include 'main/navbar.html' %}
+
+    <div class="global-container">
+      <div class="card login-form" style="width: 520px">
+        <div class="card-body">
+          <h1 class="card-title text-center"></h1>
+          <div class="card-text">
+            <div>
+              <h3>Current ICD: {{ table_name }}</h3>
+              <div class="boxed">
+                <div class="boxed-1" ">
+                <form method="POST">
+                  {% csrf_token %}
+                  <div>
+                    <label for="s.no">S.no: {{s_no}}</label>
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Parameter Name">Parameter Name</label>
+                    <input type="text" name="parameter" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Command Word">Command Word</label>
+                    <input type="text" name="command" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Word no">Word No</label>
+                    <input type="text" name="word_no" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Word Length">Word Length</label>
+                    <input type="text" name="word_length" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Scale">Scale</label>
+                    <input type="text" name="scale" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Data_Type">Data Type</label>
+                    <select name="data_type" id="">
+                      <option value="HEX16">HEX16</option>
+                      <option value="HEX32">HEX32</option>
+                      <option value="HEX64">HEX64</option>
+                      <option value="UNIT16">UNIT16</option>
+                      <option value="UNIT32">UNIT32</option>
+                      <option value="UNIT64">UNIT64</option>
+                      <option value="FLAGD">FLAGD</option>
+                      <option value="FLAGX">FLAGX</option>
+                      <option value="FLAGB">FLAGB</option>
+                      <option value="FLOAT16">FLOAT16</option>
+                      <option value="FLOAT32">FLOAT16</option>
+                      <option value="FLOAT64">FLOAT64</option>
+                      <option value="INTFLOAT16">INTFLOAT16</option>
+                      <option value="INTFLOAT32">INTFLOAT32</option>
+                      <option value="INTFLOAT64">INTFLOAT64</option>
+                      <option value="CHART">CHART</option>
+                      <option value="ADC">ADC</option>
+                      <option value="ADC12">ADC12</option>
+                      <option value="BC1">BC1</option>
+                      <option value="BC2">BC2</option>
+                      <option value="BC1N">BC1N</option>
+                      <option value="BC2N">BC2N</option>
+                      <option value="BNR1">BNR1</option>
+                      <option value="BNR1N">BNR1N</option>
+                      <option value="BNR2N">BNR2N</option>
+                    </select>
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Units">Units</label>
+                    <input type="text" name="units" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Parameter 1">Parameter 1</label>
+                    <input type="text" name="para1" />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="Parameter 2">Parameter 2</label>
+                    <input type="text" name="para2" />
+                    <div>
+                      <br />
+                      <label for="yes_no_radio">Little Endian</label>
+                      <input
+                        type="radio"
+                        name="endian"
+                        value="yes"
+                        checked
+                      />Yes <input type="radio" name="endian" value="no" />No
+                    </div>
+                    <br />
+                  </div>
+                  <div class="mx-auto" style="padding-left: 50px">
+                    <input type="submit" class="btn btn-primary mx-3" />
+                    <button
+                      class="btn btn-secondary mx-3"
+                      type="reset"
+                      name="reset"
+                      value="reset"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

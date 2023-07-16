@@ -1,0 +1,70 @@
+{% load static %}
+
+<! DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      {% for message in messages %}
+        swal('Incorrect Credentials', '{{ message }}', 'error');
+      {% endfor %}
+    </script>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-dark text-danger fixed-top font-weight-bold"
+      style="height: 80px"
+    >
+      <p
+        class="d-none d-lg-block navbar-brand text-light mx-auto"
+        style="font-size: 40px"
+      >
+        ICD Management Software
+      </p>
+    </nav>
+    <div class="global-container">
+      <div class="card login-form" style="width: 400px">
+        <div class="card-body">
+          <h1 class="card-title text-center">Login</h1>
+          <div class="card-text">
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control my-2"
+                  name="username"
+                  placeholder="Username"
+                  style="height: 60px; font-size: 22px"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  style="height: 60px; font-size: 22px"
+                />
+              </div>
+              <div class="mx-auto" style="width: 100px">
+                <button type="submit" class="btn btn-success btn-block">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

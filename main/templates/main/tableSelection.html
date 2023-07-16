@@ -1,0 +1,103 @@
+{% load static %}
+
+<! DOCTYPE html>  
+<html lang="en" >  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Select Table</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">  
+<link rel="stylesheet" href="{% static 'styles/tableSelection.css' %}">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+    <script>
+        {% for message in messages %}
+          swal('Error', '{{ message }}', 'error');
+        {% endfor %}
+        {% if messages %}
+          {% for message in messages %}
+              var message = "{{ message }}";
+              swal(message, {
+                  icon: "success",
+              });
+          {% endfor %}
+      {% endif %}
+    </script>
+    <!-- Navbar -->
+   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <p
+          class="d-none d-lg-block navbar-brand text-light mx-"
+          style="font-size: 40px"
+        >
+          ICD Management Software
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mx-5">
+        <button class="btn btn-success btn-sm">
+          <a href="{% url 'main:logout' %}" style="color: white">Logout</a>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="global-container">  
+    <div class="card login-form" style="width: 520px;">  
+    <div class="card-body">  
+        <h1 class="card-title text-center">Select ICD</h1>  
+        <div class="card-text"> 
+                <div>
+                <form method="GET">
+                    {% csrf_token %}
+                    <div>
+                    <label for="Parameter Name">Current LAB:</label>
+                    <input type="text" name="parameter" disabled="disabled"  placeholder="RCI">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Parameter Name">Create New ICD:</label>
+                        <input type="text" name="newTable" placeholder="Table Name">
+                    </div>
+                    <div class="divider mt-2">OR</div> 
+                    <div class="mt-2">
+                        <label for="table_name">Select Existing ICD:</label>
+                            <select name="existingTable" id="table_name" style="width:235px">
+                                <option value=""></option>
+                                {% for table in tables %}
+                                <option value="{{ table }}">{{ table }}</option>
+                                {% endfor %}
+                            </select>
+                            </div>
+                            <br>
+                            <!-- <div class="mx-6" style="padding-left: 175px;" >
+                                <button class=" btn btn-success mx-6" name="submit" value="submit">Enter Data</button>
+                            </div>
+                            <div class="mx-auto pt-2"  style="padding-left: 136px;">
+                              <button class=" btn btn-primary mx-3" name="download" value="download">Download Data</button>
+                          </div>
+                          <div class="mx-auto pt-2" style="padding-left: 160px;" >
+                            <button class=" btn btn-danger mx-3" name="delete_table" value="delete_table">Delete ICD</button>
+                        </div> -->
+                        <div class="mx-auto pt-2 " >
+                          <button class=" btn btn-success " name="submit" value="submit">Enter Data</button>
+                          <button class=" btn btn-primary " name="download" value="download">Download Data</button>
+                          <button class=" btn btn-danger  " name="delete_table" value="delete_table">Delete ICD</button>
+                      </div>
+
+                        </div>
+                    </div>
+            </form>
+        </div>  
+        </div>  
+    </div>  
+</div>
+</body>  
+</html>  

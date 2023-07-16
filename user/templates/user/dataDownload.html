@@ -1,0 +1,67 @@
+{% load static %}
+
+<! DOCTYPE html>  
+<html lang="en" >  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Select Table</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">  
+<link rel="stylesheet" href="{% static 'styles/tableSelection.css' %}">
+</head>
+
+<body> 
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <p
+          class="d-none d-lg-block navbar-brand text-light mx-"
+          style="font-size: 40px"
+        >
+          ICD Management Software
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mx-5">
+        <button class="btn btn-success btn-sm">
+          <a href="{% url 'main:logout' %}" style="color: white">Logout</a>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="global-container">  
+    <div class="card login-form" style="width: 520px;">  
+    <div class="card-body">  
+        <h1 class="card-title text-center">Select ICD</h1>  
+        <div class="card-text"> 
+                <div >
+                <form method="POST">
+                  {% csrf_token %}
+                    <div class=>
+                    <label for="Parameter Name">Current LAB:</label>
+                    <input type="text" name="parameter" disabled="disabled"  placeholder="RCI">
+                    <br>
+                    <div class="mt-2">
+                        <label for="Parameter Name">Select ICD:</label>
+                            <select name="table_name" id="" style="width:235px">
+                              {% for table in tables %}
+                                <option value="{{ table }}">{{ table }}</option>
+                              {% endfor %}
+                            </select>
+                            </div>
+                            <br>
+                            <div class="mx-auto" style="padding-left:85px ;">
+                                <button class="btn btn-success mx-3" type="submit">Download Data</button>
+                            </div>
+            </form>
+        </div>  
+        </div>  
+    </div>  
+</div>
+</body>  
+</html>  

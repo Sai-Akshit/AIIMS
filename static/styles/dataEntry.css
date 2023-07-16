@@ -1,0 +1,51 @@
+td,
+th {
+  padding: 4px;
+  text-align: center;
+}
+
+.global-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+form {
+  padding-top: 10px;
+  font-size: 20px;
+  margin-top: 30px;
+}
+.card-title {
+  font-weight: 600;
+}
+.btn {
+  font-size: 21px;
+}
+.login-form {
+  width: 330px;
+  margin: 30px;
+}
+td,
+th {
+  padding: 4px;
+  text-align: center;
+}
+table,
+th,
+td {
+  border: solid black 2px;
+}
+table {
+  height: 30px;
+  margin: 10px;
+}
+table {
+  border-collapse: collapse;
+}
+label {
+  width: 200px;
+  display: inline-block;
+}
+label {
+  text-align: right;
+}
